@@ -1,0 +1,14 @@
+<!-- result_page.html -->
+{% extends 'base.html' %}
+
+{% block title %}Termination Benefits{% endblock %}
+
+{% block content %}
+    <h1>Termination Benefits</h1>
+    <div class="result">
+        <p>The termination benefits are:<span style="font-weight: bolder; color: #056319;">{{ termination_benefits }}</span></p>
+        <p class="note">This amount is calculated based on your salary and years worked.</p>
+        <button class="back-btn" onclick="window.history.back()">Go Back</button>
+
+    </div>
+{% endblock %}

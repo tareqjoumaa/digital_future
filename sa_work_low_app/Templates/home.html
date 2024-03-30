@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{% static 'images/pexels-engin-akyurt-15483696.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            opacity: 1;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            margin: 50px auto;
+            height: 460px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            margin-top: 85px;
+            font-size: 28px;
+            text-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease; 
+        }
+
+        h1:hover {
+            color: #056319;
+            transform: translateY(-10px);
+        }
+
+        p {
+        color: #4a4a4a; 
+        font-size: 16px; 
+        line-height: 1.6; 
+        margin-bottom: 35px; 
+        text-align: center; 
+        max-width: 600px; 
+        margin-right: auto;
+        font-weight: bold;
+    }
+
+        .button {
+        width: calc(100% - 20px);
+        padding: 15px;
+        background-color: #056319;
+        color: #ffffff;
+        border: none;
+        border-radius: 28px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 25px;
+        font-size: 16px; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    }
+
+    .button:hover, .button:focus {
+        transform: translateY(-6px); 
+        box-shadow: 0 20px 20px rgba(1, 90, 41, 0.3); 
+        background-color: #1f8535;
+
+    }
+
+    .button:active {
+        transform: translateY(1px); 
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); 
+    }
+    hr {
+    border: none; 
+    height: 2px; 
+    background-color: #66ad75; 
+    margin-top: 30px; 
+    margin-bottom: 30px; 
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Choose Contract Type</h1>
+        <p>Select the type of contract to calculate its benefits</p>
+        <button id="fixed_term" class="button">Fixed Term Contract</button>
+        <br>
+        <br>
+        <button id="indefinite_term" class="button">Indefinite Term Contract</button>
+
+        <hr>
+
+    </div>
+    <script>
+        document.getElementById('indefinite_term').addEventListener('click', function() {
+            window.location.href = "{% url 'calculate_indefinite_term_contract_benefits' %}";
+        });
+        document.getElementById('fixed_term').addEventListener('click', function() {
+            window.location.href = "{% url 'fixed_term_contract' %}";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fixed Term Contract</title>
+    <style>
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{% static 'images/pexels-engin-akyurt-15483696.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            opacity: 1;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s ease;
+            font-size: 16px; 
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #056319;
+        }
+
+        button {
+            width: calc(100% - 20px);
+            padding: 12px;
+            background-color: #056319;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0b8e28;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: calc(100% - 20px);
+            outline: none; 
+        }
+
+        select:focus {
+            border-color: #056319; 
+        }
+        
+        select:hover {
+            background-color: #eaeaea;
+        }
+        
+        select::after {
+            content: '\25BC'; 
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .checkbox-container {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #056319; 
+        padding-bottom: 10px;
+        }
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.5);
+            background-color: #056319;
+        }
+        .checkbox-container input[type="checkbox"]:checked {
+            background-color: #056319;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculate Fixed term contract Benefits</h1>
+        <form method="post" action="{% url 'fixed_term_contract' %}">
+            {% csrf_token %}            
+            <label for="salary">Salary</label>
+            <input type="number" id="salary" name="salary" placeholder="Enter your salary" required>
+            <label for="yearsWorked">Years Worked</label>
+            <input type="number" id="yearsWorked" name="years_worked" placeholder="Enter years worked" required>
+            <label for="reason">Reason for termination</label>
+            <select id="reason" name="reason">
+                <option value="expiration">Expiration of the contract</option>
+                <option value="employer_termination">Termination of the contract by the employer</option>
+                <option value="employer_termination_article_80">Termination of the contract by the employer in one of the cases mentioned in Article (80)</option>
+                <option value="compelling_reasons">Leaving work for compelling reasons</option>
+                <option value="marriage_or_birth">The worker terminates the employment contract within 6 months of marriage or 3 months of giving birth</option>
+                <option value="other_article_81">Leaving work for one of the cases mentioned in Article (81)</option>
+                <option value="other_cases">Termination of the contract by the worker or employer in cases other than those mentioned in Article (81)</option>
+            </select>
+            <button type="submit">Calculate</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
